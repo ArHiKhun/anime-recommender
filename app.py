@@ -160,48 +160,60 @@ def get_recommendations(df, genres, min_rating, year_range, sort_method):
     
     return filtered_df
 
+# Initialize session state
+if 'searched' not in st.session_state:
+    st.session_state.searched = False
+
 # Tombol cari rekomendasi
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
-    if st.button(" Cari Rekomendasi Anime", use_container_width=True):
-        
-        # Dapatkan rekomendasi
-        rekomendasi = get_recommendations(df, genre_preference, min_rating, tahun_range, sort_by)
-        
-        # Tampilkan hasil
-        st.markdown("---")
-        st.markdown(f"### 📺 Ditemukan {len(rekomendasi)} Anime untuk Kamu!")
-        st.markdown("---")
-        
-        # Tampilkan dalam grid
-        for idx, row in rekomendasi.iterrows():
-            with st.container():
-                col1, col2 = st.columns([1, 3])
+    if st.button("🔍 Cari Rekomendasi Anime", use_container_width=True):
+        st.session_state.searched = True
+
+# Tampilkan hasil jika sudah search
+if st.session_state.searched:
+    # Dapatkan rekomendasi
+    rekomendasi = get_recommendations(df, genre_preference, min_rating, tahun_range, sort_by)
+    
+    # Tampilkan hasil
+    st.markdown("---")
+    st.markdown(f"### 📺 Ditemukan {len(rekomendasi)} Anime untuk Kamu!")
+    st.markdown("---")
+    
+    # Tampilkan dalam grid
+    for idx, row in rekomendasi.iterrows():
+        with st.container():
+            col1, col2 = st.columns([1, 3])
+            
+            with col1:
+                # Placeholder untuk gambar (bisa diganti dengan URL gambar nyata)
+                st.image(f"https://via.placeholder.com/150x200/667eea/ffffff?text={row['judul'].replace(' ', '+')}", 
+                        width=150)
+            
+            with col2:
+                st.subheader(row['judul'])
+                st.markdown(f"**Genre:** {row['genre']}")
+                st.markdown(f"**Rating:** ⭐ {row['rating']}/10")
+                st.markdown(f"**Tahun:** {row['tahun']}")
+                st.markdown(f"**Sinopsis:** {row['sinopsis']}")
                 
-                with col1:
-                    # Placeholder untuk gambar (bisa diganti dengan URL gambar nyata)
-                    st.image(f"https://via.placeholder.com/150x200/667eea/ffffff?text={row['judul'].replace(' ', '+')}", 
-                            width=150)
-                
-                with col2:
-                    st.subheader(row['judul'])
-                    st.markdown(f"**Genre:** {row['genre']}")
-                    st.markdown(f"**Rating:** ⭐ {row['rating']}/10")
-                    st.markdown(f"**Tahun:** {row['tahun']}")
-                    st.markdown(f"**Sinopsis:** {row['sinopsis']}")
-                    
-                    # Progress bar untuk rating
-                    st.progress(int(row['rating'] * 10))
-                
-                st.markdown("---")
-        
-        # Statistik
-        st.markdown("### 📊 Statistik Hasil")
-        col1, col2, col3, col4 = st.columns(4)
-        col1.metric("Total Anime", len(rekomendasi))
-        col2.metric("Rata-rata Rating", f"{rekomendasi['rating'].mean():.1f}")
-        col3.metric("Tertinggi", f"{rekomendasi['rating'].max():.1f}")
-        col4.metric("Terendah", f"{rekomendasi['rating'].min():.1f}")
+                # Progress bar untuk rating
+                st.progress(int(row['rating'] * 10))
+            
+            st.markdown("---")
+    
+    # Statistik
+    st.markdown("### 📊 Statistik Hasil")
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("Total Anime", len(rekomendasi))
+    col2.metric("Rata-rata Rating", f"{rekomendasi['rating'].mean():.1f}")
+    col3.metric("Tertinggi", f"{rekomendasi['rating'].max():.1f}")
+    col4.metric("Terendah", f"{rekomendasi['rating'].min():.1f}")
+    
+    # Tombol reset
+    if st.button("🔄 Reset Pencarian"):
+        st.session_state.searched = False
+        st.rerun()
 
 # Tampilkan semua data jika belum search
 else:
