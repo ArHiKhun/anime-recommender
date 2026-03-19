@@ -24,18 +24,9 @@ st.set_page_config(
 # ============================================================
 st.markdown("""
 <style>
-    /* Clean Base */
-    .main {
-        background: #0f1419;
-        color: #e0e0e0;
-    }
+    .main { background: #0f1419; color: #e0e0e0; }
+    .block-container { padding: 2rem; max-width: 1400px; }
     
-    .block-container {
-        padding: 2rem;
-        max-width: 1400px;
-    }
-    
-    /* Clean Header */
     .header {
         text-align: center;
         padding: 2rem;
@@ -44,32 +35,14 @@ st.markdown("""
         margin-bottom: 2rem;
         border: 1px solid #2d3648;
     }
+    .header h1 { color: #fff; font-size: 2.5rem; font-weight: 600; margin: 0; }
+    .header p { color: #8892b0; font-size: 1.1rem; margin: 0.5rem 0 0 0; }
     
-    .header h1 {
-        color: #fff;
-        font-size: 2.5rem;
-        font-weight: 600;
-        margin: 0;
-        letter-spacing: -0.5px;
-    }
-    
-    .header p {
-        color: #8892b0;
-        font-size: 1.1rem;
-        margin: 0.5rem 0 0 0;
-    }
-    
-    /* Sidebar Clean */
     section[data-testid="stSidebar"] {
         background: #161b22;
         border-right: 1px solid #21262d;
     }
     
-    section[data-testid="stSidebar"] .block-container {
-        padding: 2rem 1.5rem;
-    }
-    
-    /* Section Titles */
     .section-title {
         color: #58a6ff;
         font-size: 0.85rem;
@@ -81,20 +54,14 @@ st.markdown("""
         border-bottom: 1px solid #21262d;
     }
     
-    /* Clean Cards */
     .anime-card {
         background: #161b22;
         border: 1px solid #21262d;
         border-radius: 12px;
         padding: 1.5rem;
         margin-bottom: 1rem;
-        transition: all 0.2s ease;
     }
-    
-    .anime-card:hover {
-        border-color: #30363d;
-        background: #1c2128;
-    }
+    .anime-card:hover { border-color: #30363d; background: #1c2128; }
     
     .anime-title {
         color: #f0f6fc;
@@ -118,30 +85,10 @@ st.markdown("""
         font-size: 0.85rem;
         border: 1px solid #30363d;
     }
-    
-    .meta-badge.rating {
-        background: #238636;
-        color: #fff;
-        border-color: #2ea043;
-    }
-    
-    .meta-badge.year {
-        background: #1f6feb;
-        color: #fff;
-        border-color: #388bfd;
-    }
-    
-    .meta-badge.episodes {
-        background: #8957e5;
-        color: #fff;
-        border-color: #a371f7;
-    }
-    
-    .meta-badge.studio {
-        background: #da3633;
-        color: #fff;
-        border-color: #f85149;
-    }
+    .meta-badge.rating { background: #238636; color: #fff; border-color: #2ea043; }
+    .meta-badge.year { background: #1f6feb; color: #fff; border-color: #388bfd; }
+    .meta-badge.episodes { background: #8957e5; color: #fff; border-color: #a371f7; }
+    .meta-badge.studio { background: #da3633; color: #fff; border-color: #f85149; }
     
     .genre-tags {
         display: flex;
@@ -149,7 +96,6 @@ st.markdown("""
         flex-wrap: wrap;
         margin: 1rem 0;
     }
-    
     .genre-tag {
         background: #0d1117;
         color: #58a6ff;
@@ -166,7 +112,6 @@ st.markdown("""
         margin-top: 1rem;
     }
     
-    /* Buttons */
     .stButton > button {
         background: #238636 !important;
         color: #fff !important;
@@ -174,147 +119,44 @@ st.markdown("""
         padding: 0.75rem 1.5rem !important;
         border-radius: 8px !important;
         font-weight: 500 !important;
-        font-size: 1rem !important;
         width: 100% !important;
-        transition: all 0.2s ease !important;
     }
+    .stButton > button:hover { background: #2ea043 !important; }
     
-    .stButton > button:hover {
-        background: #2ea043 !important;
-        transform: translateY(-1px);
-    }
-    
-    .stButton > button:active {
-        transform: translateY(0);
-    }
-    
-    /* Secondary Button */
     button[kind="secondary"] {
         background: #21262d !important;
         border: 1px solid #30363d !important;
         color: #c9d1d9 !important;
     }
     
-    button[kind="secondary"]:hover {
-        background: #30363d !important;
-    }
-    
-    /* Input Fields */
-    .stSelectbox > div > div, .stSlider > div > div {
-        background: #0d1117 !important;
-        border: 1px solid #30363d !important;
-        border-radius: 8px !important;
-    }
-    
-    /* Tabs */
     .stTabs [data-baseweb="tab-list"] {
         background: #161b22;
         padding: 0.5rem;
         border-radius: 12px;
         gap: 0.5rem;
     }
-    
     .stTabs [data-baseweb="tab"] {
         background: transparent !important;
         color: #8b949e !important;
         border-radius: 8px !important;
         padding: 0.75rem 1.25rem !important;
-        border: none !important;
     }
-    
     .stTabs [aria-selected="true"] {
         background: #1f6feb !important;
         color: #fff !important;
     }
     
-    /* DataFrame */
-    .stDataFrame {
-        background: #161b22;
-        border: 1px solid #21262d;
-        border-radius: 12px;
-    }
-    
-    /* Divider */
-    hr {
-        border: none;
-        height: 1px;
-        background: #21262d;
-        margin: 2rem 0;
-    }
-    
-    /* Stats Cards */
-    .stat-card {
-        background: #161b22;
-        border: 1px solid #21262d;
-        border-radius: 12px;
-        padding: 1.5rem;
-        text-align: center;
-    }
-    
-    .stat-value {
-        color: #58a6ff;
-        font-size: 2rem;
-        font-weight: 700;
-    }
-    
-    .stat-label {
-        color: #8b949e;
-        font-size: 0.875rem;
-        margin-top: 0.5rem;
-    }
-    
-    /* Info Box */
-    .info-box {
-        background: #161b22;
-        border-left: 4px solid #1f6feb;
-        padding: 1rem 1.5rem;
-        border-radius: 0 8px 8px 0;
-        margin: 1rem 0;
-    }
-    
-    .info-box h4 {
-        color: #58a6ff;
-        margin: 0 0 0.5rem 0;
-    }
-    
-    .info-box p {
-        color: #8b949e;
-        margin: 0;
-        font-size: 0.9rem;
-    }
-    
-    /* Cluster Cards */
     .cluster-card {
         background: #161b22;
         border: 1px solid #21262d;
         border-radius: 12px;
         padding: 1.25rem;
         text-align: center;
-        transition: all 0.2s ease;
     }
+    .cluster-number { color: #f0f6fc; font-size: 1.5rem; font-weight: 700; }
+    .cluster-count { color: #8b949e; font-size: 0.875rem; margin: 0.5rem 0; }
+    .cluster-rating { color: #3fb950; font-weight: 600; }
     
-    .cluster-card:hover {
-        border-color: #30363d;
-    }
-    
-    .cluster-number {
-        color: #f0f6fc;
-        font-size: 1.5rem;
-        font-weight: 700;
-    }
-    
-    .cluster-count {
-        color: #8b949e;
-        font-size: 0.875rem;
-        margin: 0.5rem 0;
-    }
-    
-    .cluster-rating {
-        color: #3fb950;
-        font-weight: 600;
-    }
-    
-    /* Favorites */
     .favorite-item {
         background: #161b22;
         border: 1px solid #21262d;
@@ -325,20 +167,9 @@ st.markdown("""
         justify-content: space-between;
         align-items: center;
     }
+    .favorite-info h4 { color: #f0f6fc; margin: 0; font-size: 1rem; }
+    .favorite-info p { color: #8b949e; margin: 0.25rem 0 0 0; font-size: 0.85rem; }
     
-    .favorite-info h4 {
-        color: #f0f6fc;
-        margin: 0;
-        font-size: 1rem;
-    }
-    
-    .favorite-info p {
-        color: #8b949e;
-        margin: 0.25rem 0 0 0;
-        font-size: 0.85rem;
-    }
-    
-    /* Footer */
     .footer {
         text-align: center;
         padding: 2rem;
@@ -348,36 +179,6 @@ st.markdown("""
         border-top: 1px solid #21262d;
     }
     
-    /* Scrollbar */
-    ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-    }
-    
-    ::-webkit-scrollbar-track {
-        background: #0d1117;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-        background: #30363d;
-        border-radius: 4px;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-        background: #484f58;
-    }
-    
-    /* Image Container */
-    .anime-image {
-        width: 100%;
-        max-width: 200px;
-        height: 280px;
-        object-fit: cover;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    
-    /* Similarity Score */
     .similarity-score {
         background: linear-gradient(90deg, #1f6feb, #58a6ff);
         color: #fff;
@@ -387,22 +188,13 @@ st.markdown("""
         font-weight: 600;
     }
     
-    /* Status Badge */
-    .status-completed {
-        background: #238636;
-        color: #fff;
-    }
-    
-    .status-ongoing {
-        background: #1f6feb;
-        color: #fff;
-    }
-    
+    .status-completed { background: #238636; color: #fff; }
+    .status-ongoing { background: #1f6feb; color: #fff; }
 </style>
 """, unsafe_allow_html=True)
 
 # ============================================================
-# DATASET - 30 ANIME (BALANCED & VERIFIED)
+# DATASET - 30 ANIME
 # ============================================================
 @st.cache_data
 def load_data():
@@ -416,7 +208,7 @@ def load_data():
             'studio': 'Wit Studio/MAPPA',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'Humanity fights for survival against giant humanoid Titans in a post-apocalyptic world. Eren Yeoman vows to exterminate all Titans after they destroy his hometown.',
+            'sinopsis': 'Humanity fights for survival against giant humanoid Titans in a post-apocalyptic world.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/10/47347.jpg'
         },
         {
@@ -428,7 +220,7 @@ def load_data():
             'studio': 'Madhouse',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'A high school student discovers a supernatural notebook that grants him power over life and death. He begins a crusade to rid the world of criminals.',
+            'sinopsis': 'A high school student discovers a supernatural notebook that grants him power over life and death.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/9/9453.jpg'
         },
         {
@@ -440,7 +232,7 @@ def load_data():
             'studio': 'Toei Animation',
             'status': 'Ongoing',
             'type': 'TV',
-            'sinopsis': 'Monkey D. Luffy and his pirate crew explore the Grand Line in search of the ultimate treasure known as One Piece to become the next Pirate King.',
+            'sinopsis': 'Monkey D. Luffy and his pirate crew explore the Grand Line in search of the ultimate treasure.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/6/73245.jpg'
         },
         {
@@ -452,7 +244,7 @@ def load_data():
             'studio': 'Pierrot',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'Young ninja seeks recognition and dreams of becoming Hokage of his village. He faces challenges and makes friends along the way.',
+            'sinopsis': 'Young ninja seeks recognition and dreams of becoming Hokage of his village.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/13/17405.jpg'
         },
         {
@@ -464,7 +256,7 @@ def load_data():
             'studio': 'ufotable',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'Tanjiro becomes a demon slayer to save his sister and avenge his family. He joins the Demon Slayer Corps to fight demons.',
+            'sinopsis': 'Tanjiro becomes a demon slayer to save his sister and avenge his family.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/1286/99889.jpg'
         },
         {
@@ -476,7 +268,7 @@ def load_data():
             'studio': 'Bones',
             'status': 'Ongoing',
             'type': 'TV',
-            'sinopsis': 'In a world where people with superpowers are the norm, Izuku Midoriya dreams of becoming a hero despite being born without powers.',
+            'sinopsis': 'In a world where people with superpowers are the norm, Izuku Midoriya dreams of becoming a hero.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/10/78745.jpg'
         },
         {
@@ -488,7 +280,7 @@ def load_data():
             'studio': 'Bones',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'Two brothers search for Philosopher Stone to restore their bodies after a failed alchemical ritual. Their journey reveals dark truths.',
+            'sinopsis': 'Two brothers search for Philosopher Stone to restore their bodies.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/5/47421.jpg'
         },
         {
@@ -500,7 +292,7 @@ def load_data():
             'studio': 'Wit Studio/CloverWorks',
             'status': 'Ongoing',
             'type': 'TV',
-            'sinopsis': 'A spy creates a fake family for his mission, unaware that his adopted daughter is a telepath and his wife is an assassin.',
+            'sinopsis': 'A spy creates a fake family for his mission, unaware that his adopted daughter is a telepath.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/1441/122795.jpg'
         },
         {
@@ -512,7 +304,7 @@ def load_data():
             'studio': 'MAPPA',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'A student fights curses in supernatural world with ancient techniques. He joins a secret organization to protect people from curses.',
+            'sinopsis': 'A student fights curses in supernatural world with ancient techniques.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/1171/109222.jpg'
         },
         {
@@ -524,7 +316,7 @@ def load_data():
             'studio': 'Pierrot',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'A college student becomes half-ghoul after an accident and must survive in a world where ghouls hunt humans for food.',
+            'sinopsis': 'A college student becomes half-ghoul after an accident.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/1498/107326.jpg'
         },
         {
@@ -536,7 +328,7 @@ def load_data():
             'studio': 'CoMix Wave',
             'status': 'Completed',
             'type': 'Movie',
-            'sinopsis': 'Two teenagers connected by fate across time and space switch bodies and form a bond that transcends distance and time.',
+            'sinopsis': 'Two teenagers connected by fate across time and space.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/5/87048.jpg'
         },
         {
@@ -548,7 +340,7 @@ def load_data():
             'studio': 'Kyoto Animation',
             'status': 'Completed',
             'type': 'Movie',
-            'sinopsis': 'A story about bullying, redemption, and second chances. A former bully seeks forgiveness from a deaf girl he tormented in elementary school.',
+            'sinopsis': 'A story about bullying, redemption, and second chances.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/1122/96435.jpg'
         },
         {
@@ -560,7 +352,7 @@ def load_data():
             'studio': 'CloverWorks',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'High school romance between popular girl and quiet boy who discover each other secret lives outside of school.',
+            'sinopsis': 'High school romance between popular girl and quiet boy.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/1695/111486.jpg'
         },
         {
@@ -572,7 +364,7 @@ def load_data():
             'studio': 'J.C.Staff',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'Unlikely romance between two high school students with opposite personalities who help each other with their crushes.',
+            'sinopsis': 'Unlikely romance between two high school students.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/13/22128.jpg'
         },
         {
@@ -584,7 +376,7 @@ def load_data():
             'studio': 'A-1 Pictures',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'Battle of wits between two student council members who are too proud to confess their love for each other.',
+            'sinopsis': 'Battle of wits between two student council members.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/1295/106551.jpg'
         },
         {
@@ -596,7 +388,7 @@ def load_data():
             'studio': 'Madhouse',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'A hero who can defeat any enemy with one punch seeks a worthy challenge. He grows bored of his overwhelming strength.',
+            'sinopsis': 'A hero who can defeat any enemy with one punch.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/12/76049.jpg'
         },
         {
@@ -608,7 +400,7 @@ def load_data():
             'studio': 'Bones',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'A boy with powerful psychic powers tries to live a normal life under the mentorship of a con artist who claims to be a psychic.',
+            'sinopsis': 'A boy with psychic powers tries to live a normal life.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/8/80356.jpg'
         },
         {
@@ -620,7 +412,7 @@ def load_data():
             'studio': 'Madhouse',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'Young boy searches for his father and faces incredible challenges as he becomes a Hunter, an elite adventurer.',
+            'sinopsis': 'Young boy searches for his father and becomes a Hunter.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/1337/99013.jpg'
         },
         {
@@ -632,7 +424,7 @@ def load_data():
             'studio': 'White Fox',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'Time travel thriller with devastating consequences. A scientist accidentally discovers a way to send messages to the past.',
+            'sinopsis': 'Time travel thriller with devastating consequences.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/5/73199.jpg'
         },
         {
@@ -644,7 +436,7 @@ def load_data():
             'studio': 'Sunrise',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'An exiled prince leads a rebellion against a corrupt empire using the supernatural power of Geass to control people minds.',
+            'sinopsis': 'An exiled prince leads a rebellion using Geass power.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/5/50331.jpg'
         },
         {
@@ -656,7 +448,7 @@ def load_data():
             'studio': 'Sunrise',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'Bounty hunters travel through space in a jazz-infused noir adventure, each running from their past while chasing criminals.',
+            'sinopsis': 'Bounty hunters travel through space.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/4/19646.jpg'
         },
         {
@@ -668,7 +460,7 @@ def load_data():
             'studio': 'Kyoto Animation',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'An Auto Memory Doll writes letters that connect people hearts as she searches for the meaning behind her beloved major last words.',
+            'sinopsis': 'An Auto Memory Doll writes letters connecting hearts.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/1795/95088.jpg'
         },
         {
@@ -680,7 +472,7 @@ def load_data():
             'studio': 'A-1 Pictures',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'A man travels back in time to prevent a tragedy from his childhood and catch a serial killer who targets children.',
+            'sinopsis': 'A man travels back in time to prevent a tragedy.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/10/77957.jpg'
         },
         {
@@ -692,7 +484,7 @@ def load_data():
             'studio': 'White Fox',
             'status': 'Ongoing',
             'type': 'TV',
-            'sinopsis': 'A boy wakes up in a parallel world and discovers he can return from death. He tries to save his friends from a tragic fate.',
+            'sinopsis': 'A boy wakes up in a parallel world and can return from death.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/11/79410.jpg'
         },
         {
@@ -704,7 +496,7 @@ def load_data():
             'studio': 'Madhouse',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'Gaming genius siblings are transported to a world where games decide everything. They aim to defeat the god of games.',
+            'sinopsis': 'Gaming genius siblings in a world where games decide everything.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/5/65187.jpg'
         },
         {
@@ -716,7 +508,7 @@ def load_data():
             'studio': 'A-1 Pictures',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'Players trapped in a VRMMORPG must clear the game to escape. Death in the game means death in real life.',
+            'sinopsis': 'Players trapped in a VRMMORPG must clear the game to escape.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/11/39717.jpg'
         },
         {
@@ -728,7 +520,7 @@ def load_data():
             'studio': 'LIDENFILMS',
             'status': 'Ongoing',
             'type': 'TV',
-            'sinopsis': 'A delinquent travels back in time to save his girlfriend from being killed by a ruthless gang. He infiltrates the gang to change the future.',
+            'sinopsis': 'A delinquent travels back in time to save his girlfriend.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/1179/119897.jpg'
         },
         {
@@ -740,7 +532,7 @@ def load_data():
             'studio': 'MAPPA',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'A boy makes a contract with a chainsaw devil and becomes a devil hunter. He joins a special squad to hunt devils.',
+            'sinopsis': 'A boy makes a contract with a chainsaw devil.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/1802/108501.jpg'
         },
         {
@@ -752,7 +544,7 @@ def load_data():
             'studio': 'Production I.G',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'A high school volleyball team aims for nationals. A short but determined player joins the team to become a great volleyball player.',
+            'sinopsis': 'A high school volleyball team aims for nationals.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/7/76014.jpg'
         },
         {
@@ -764,7 +556,7 @@ def load_data():
             'studio': 'CloverWorks',
             'status': 'Completed',
             'type': 'TV',
-            'sinopsis': 'Orphans discover a dark truth about their orphanage and plan their escape. They must outsmart their caretaker to survive.',
+            'sinopsis': 'Orphans discover a dark truth about their orphanage.',
             'image_url': 'https://cdn.myanimelist.net/images/anime/1125/96929.jpg'
         }
     ]
@@ -775,8 +567,7 @@ def load_data():
 # ML FUNCTIONS
 # ============================================================
 @st.cache_data
-def compute_ml_features(df):
-    """Prepare features for ML"""
+def compute_features(df):
     all_genres = set()
     for genres in df['genre']:
         for g in genres.split(','):
@@ -790,368 +581,192 @@ def compute_ml_features(df):
         genre_matrix.append(genre_row)
     
     genre_df = pd.DataFrame(genre_matrix, columns=all_genres)
-    
     scaler = StandardScaler()
     numerical = scaler.fit_transform(df[['rating', 'tahun', 'episodes']])
-    
     features = np.hstack([genre_df.values, numerical])
-    return features, all_genres
+    return features
 
 @st.cache_data
-def get_similarity_matrix(df, features):
-    """Compute similarity"""
+def get_similarity(df, features):
     tfidf = TfidfVectorizer(stop_words='english', max_features=50)
-    text_features = tfidf.fit_transform(df['genre'] + ' ' + df['sinopsis'])
-    
+    text = tfidf.fit_transform(df['genre'] + ' ' + df['sinopsis'])
     from scipy.sparse import hstack, csr_matrix
-    numerical_sparse = csr_matrix(features[:, -3:])
-    combined = hstack([text_features, numerical_sparse])
-    
+    combined = hstack([text, csr_matrix(features[:, -3:])])
     return cosine_similarity(combined)
 
 @st.cache_data
-def cluster_data(df, features, n=5):
-    """K-Means clustering"""
+def do_clustering(df, features, n=5):
     kmeans = KMeans(n_clusters=n, random_state=42, n_init=10)
     clusters = kmeans.fit_predict(features)
-    
-    df_clustered = df.copy()
-    df_clustered['cluster'] = clusters
+    df_c = df.copy()
+    df_c['cluster'] = clusters
     
     info = {}
     for i in range(n):
-        cluster_data = df_clustered[df_clustered['cluster'] == i]
-        avg_rating = cluster_data['rating'].mean()
-        
+        cluster_data = df_c[df_c['cluster'] == i]
         all_genres = []
         for genres in cluster_data['genre']:
             all_genres.extend([g.strip() for g in genres.split(',')])
-        top_genres = Counter(all_genres).most_common(2)
-        
+        top = Counter(all_genres).most_common(2)
         info[i] = {
             'count': len(cluster_data),
-            'avg_rating': avg_rating,
-            'top_genres': [g[0] for g in top_genres],
-            'animes': cluster_data['judul'].tolist()
+            'avg_rating': cluster_data['rating'].mean(),
+            'top_genres': [g[0] for g in top]
         }
-    
-    return df_clustered, info
+    return df_c, info
 
-def get_content_recommendations(df, title, sim_matrix, n=5):
-    """Content-based recommendations"""
+def content_recs(df, title, sim_matrix, n=5):
     try:
         idx = df[df['judul'] == title].index[0]
     except:
         return []
-    
-    scores = list(enumerate(sim_matrix[idx]))
-    scores = sorted(scores, key=lambda x: x[1], reverse=True)[1:n+1]
-    
-    results = []
-    for i, score in scores:
-        anime = df.iloc[i]
-        results.append({
-            'judul': anime['judul'],
-            'genre': anime['genre'],
-            'rating': anime['rating'],
-            'tahun': anime['tahun'],
-            'episodes': anime['episodes'],
-            'studio': anime['studio'],
-            'status': anime['status'],
-            'type': anime['type'],
-            'sinopsis': anime['sinopsis'],
-            'image_url': anime['image_url'],
-            'similarity': score
-        })
-    return results
+    scores = sorted(enumerate(sim_matrix[idx]), key=lambda x: x[1], reverse=True)[1:n+1]
+    return [df.iloc[i].to_dict() | {'similarity': s} for i, s in scores]
 
-def get_cluster_recommendations(df_clustered, title, n=5):
-    """Cluster-based recommendations"""
+def cluster_recs(df_c, title, n=5):
     try:
-        cluster = df_clustered[df_clustered['judul'] == title]['cluster'].iloc[0]
+        c = df_c[df_c['judul'] == title]['cluster'].iloc[0]
     except:
         return []
-    
-    same_cluster = df_clustered[
-        (df_clustered['cluster'] == cluster) & 
-        (df_clustered['judul'] != title)
-    ].sort_values('rating', ascending=False).head(n)
-    
-    return same_cluster.to_dict('records')
+    same = df_c[(df_c['cluster'] == c) & (df_c['judul'] != title)]
+    return same.sort_values('rating', ascending=False).head(n).to_dict('records')
 
 # ============================================================
 # LOAD DATA
 # ============================================================
 df = load_data()
-features, all_genres = compute_ml_features(df)
-similarity_matrix = get_similarity_matrix(df, features)
-df_clustered, cluster_info = cluster_data(df, features, n=5)
+features = compute_features(df)
+similarity_matrix = get_similarity(df, features)
+df_clustered, cluster_info = do_clustering(df, features, n=5)
 
 # ============================================================
 # SESSION STATE
 # ============================================================
 if 'favorites' not in st.session_state:
     st.session_state.favorites = []
-if 'search_results' not in st.session_state:
-    st.session_state.search_results = None
+if 'results' not in st.session_state:
+    st.session_state.results = None
 
 # ============================================================
-# HEADER
+# UI
 # ============================================================
-st.markdown("""
-    <div class="header">
-        <h1>🎌 Anime Recommender</h1>
-        <p>Temukan anime terbaik dengan rekomendasi cerdas</p>
-    </div>
-""", unsafe_allow_html=True)
+st.markdown('<div class="header"><h1>🎌 Anime Recommender</h1><p>Temukan anime terbaik dengan rekomendasi cerdas</p></div>', unsafe_allow_html=True)
 
-# ============================================================
-# SIDEBAR
-# ============================================================
+# Sidebar
 st.sidebar.markdown('<div class="section-title">⚙️ Konfigurasi</div>', unsafe_allow_html=True)
+mode = st.sidebar.radio("Mode:", ["🤖 Content-Based", "📊 Cluster-Based", "🔍 Hybrid", "⚡ Manual Filter"])
 
-# Mode
-mode = st.sidebar.radio(
-    "Mode Rekomendasi:",
-    ["🤖 Content-Based (ML)", "📊 Cluster-Based (ML)", "🔍 Hybrid (ML)", "⚡ Manual Filter"],
-    index=0
-)
+if "ML" in mode or "Hybrid" in mode:
+    st.sidebar.markdown('<div class="section-title">📺 Referensi</div>', unsafe_allow_html=True)
+    ref = st.sidebar.selectbox("Pilih anime:", df['judul'].tolist())
+    n_res = st.sidebar.slider("Jumlah:", 1, 10, 5)
 
-# Reference Anime for ML
-if "ML" in mode:
-    st.sidebar.markdown('<div class="section-title" style="margin-top: 1.5rem;">📺 Anime Referensi</div>', unsafe_allow_html=True)
-    reference = st.sidebar.selectbox(
-        "Pilih anime favorit:",
-        df['judul'].tolist(),
-        index=0
-    )
-    n_results = st.sidebar.slider("Jumlah rekomendasi:", 1, 10, 5)
-
-# Manual Filters
 if mode == "⚡ Manual Filter":
-    st.sidebar.markdown('<div class="section-title" style="margin-top: 1.5rem;">🎭 Filter</div>', unsafe_allow_html=True)
-    
-    selected_genres = st.sidebar.multiselect(
-        "Genre:",
-        ['Action', 'Adventure', 'Comedy', 'Drama', 'Romance', 'Fantasy', 'Sci-Fi', 
-         'Supernatural', 'Slice of Life', 'Horror', 'Mystery', 'Sports', 'Thriller'],
-        default=[]
-    )
-    
-    min_rating = st.sidebar.slider("Minimal Rating:", 0.0, 10.0, 7.0, 0.1)
-    year_range = st.sidebar.slider("Tahun:", 1990, 2024, (2000, 2024))
+    st.sidebar.markdown('<div class="section-title">🎭 Filter</div>', unsafe_allow_html=True)
+    genres_sel = st.sidebar.multiselect("Genre:", ['Action', 'Adventure', 'Comedy', 'Drama', 'Romance', 'Fantasy', 'Sci-Fi', 'Supernatural', 'Slice of Life', 'Horror', 'Mystery', 'Sports', 'Thriller'])
+    min_r = st.sidebar.slider("Min Rating:", 0.0, 10.0, 7.0, 0.1)
+    year_r = st.sidebar.slider("Tahun:", 1990, 2024, (2000, 2024))
 
-# Stats
-st.sidebar.markdown('<div class="section-title" style="margin-top: 2rem;">📈 Statistik</div>', unsafe_allow_html=True)
-col1, col2 = st.sidebar.columns(2)
-col1.metric("Total", len(df))
-col2.metric("Rating Avg", f"{df['rating'].mean():.1f}")
+st.sidebar.markdown('<div class="section-title">📈 Statistik</div>', unsafe_allow_html=True)
+c1, c2 = st.sidebar.columns(2)
+c1.metric("Total", len(df))
+c2.metric("Avg", f"{df['rating'].mean():.1f}")
 
-# ============================================================
-# MAIN TABS
-# ============================================================
+# Tabs
 tab1, tab2, tab3, tab4 = st.tabs(["🔍 Rekomendasi", "📊 Analytics", "📚 Database", "⭐ Favorit"])
 
-# ============================================================
-# TAB 1: RECOMMENDATIONS
-# ============================================================
+# Tab 1
 with tab1:
-    # Generate Button
     if st.button("🔍 GENERATE REKOMENDASI", type="primary", use_container_width=True):
-        st.session_state.search_results = None
-        
-        if mode == "🤖 Content-Based (ML)":
-            st.session_state.search_results = get_content_recommendations(df, reference, similarity_matrix, n_results)
-            st.success(f"Rekomendasi berbasis konten untuk: **{reference}**")
-            
-        elif mode == "📊 Cluster-Based (ML)":
-            st.session_state.search_results = get_cluster_recommendations(df_clustered, reference, n_results)
-            cluster_num = df_clustered[df_clustered['judul'] == reference]['cluster'].iloc[0]
-            st.success(f"Rekomendasi dari Cluster #{cluster_num}: **{reference}**")
-            
-        elif mode == "🔍 Hybrid (ML)":
-            content = get_content_recommendations(df, reference, similarity_matrix, n_results//2 + 1)
-            cluster = get_cluster_recommendations(df_clustered, reference, n_results//2 + 1)
-            
+        if mode == "🤖 Content-Based":
+            st.session_state.results = content_recs(df, ref, similarity_matrix, n_res)
+            st.success(f"Content-Based: {ref}")
+        elif mode == "📊 Cluster-Based":
+            st.session_state.results = cluster_recs(df_clustered, ref, n_res)
+            st.success(f"Cluster #{df_clustered[df_clustered['judul']==ref]['cluster'].iloc[0]}: {ref}")
+        elif mode == "🔍 Hybrid":
+            c = content_recs(df, ref, similarity_matrix, n_res//2+1)
+            cl = cluster_recs(df_clustered, ref, n_res//2+1)
             seen = set()
-            combined = []
-            for rec in content + cluster:
-                if rec['judul'] not in seen and rec['judul'] != reference:
-                    combined.append(rec)
-                    seen.add(rec['judul'])
-                    if len(combined) >= n_results:
+            st.session_state.results = []
+            for r in c + cl:
+                if r['judul'] not in seen and r['judul'] != ref:
+                    st.session_state.results.append(r)
+                    seen.add(r['judul'])
+                    if len(st.session_state.results) >= n_res:
                         break
-            
-            st.session_state.search_results = combined
-            st.success(f"Rekomendasi Hybrid untuk: **{reference}**")
-            
-        else:  # Manual Filter
-            filtered = df.copy()
-            if selected_genres:
-                filtered = filtered[filtered['genre'].apply(
-                    lambda x: any(g in x for g in selected_genres)
-                )]
-            filtered = filtered[
-                (filtered['rating'] >= min_rating) &
-                (filtered['tahun'] >= year_range[0]) &
-                (filtered['tahun'] <= year_range[1])
-            ]
-            
-            results = filtered.sort_values('rating', ascending=False).head(10).to_dict('records')
-            for r in results:
-                r['similarity'] = r['rating'] / 10
-            
-            st.session_state.search_results = results
-            st.success(f"Ditemukan {len(results)} anime")
-    
-    # Display Results
-    if st.session_state.search_results:
+            st.success(f"Hybrid: {ref}")
+        else:
+            f = df.copy()
+            if genres_sel:
+                f = f[f['genre'].apply(lambda x: any(g in x for g in genres_sel))]
+            f = f[(f['rating']>=min_r) & (f['tahun']>=year_r[0]) & (f['tahun']<=year_r[1])]
+            st.session_state.results = f.sort_values('rating', ascending=False).head(10).to_dict('records')
+            for r in st.session_state.results:
+                r['similarity'] = r['rating']/10
+            st.success(f"Found {len(st.session_state.results)} anime")
+
+    if st.session_state.results:
         st.markdown("---")
-        
-        for idx, anime in enumerate(st.session_state.search_results):
-            similarity = int(anime.get('similarity', 0.8) * 100)
-            
-            col1, col2 = st.columns([1, 3])
-            
+        for idx, a in enumerate(st.session_state.results):
+            sim = int(a.get('similarity', 0.8)*100)
+            col1, col2 = st.columns([1,3])
             with col1:
-                st.image(anime['image_url'], use_container_width=True)
-            
+                st.image(a['image_url'], use_container_width=True)
             with col2:
                 st.markdown(f"""
-                    <div class="anime-card">
-                        <div class="anime-title">{anime['judul']}</div>
-                        <div class="anime-meta">
-                            <span class="meta-badge rating">⭐ {anime['rating']}</span>
-                            <span class="meta-badge year">📅 {anime['tahun']}</span>
-                            <span class="meta-badge episodes">🎬 {anime['episodes']} eps</span>
-                            <span class="meta-badge studio">🏢 {anime['studio']}</span>
-                            <span class="meta-badge {'status-completed' if anime['status'] == 'Completed' else 'status-ongoing'}">{anime['status']}</span>
-                            <span class="similarity-score">Match: {similarity}%</span>
-                        </div>
-                        <div class="genre-tags">
-                            {''.join([f'<span class="genre-tag">{g.strip()}</span>' for g in anime['genre'].split(',')])}
-                        </div>
-                        <div class="synopsis">{anime['sinopsis']}</div>
+                <div class="anime-card">
+                    <div class="anime-title">{a['judul']}</div>
+                    <div class="anime-meta">
+                        <span class="meta-badge rating">⭐ {a['rating']}</span>
+                        <span class="meta-badge year">📅 {a['tahun']}</span>
+                        <span class="meta-badge episodes">🎬 {a['episodes']} eps</span>
+                        <span class="meta-badge studio">🏢 {a['studio']}</span>
+                        <span class="meta-badge {'status-completed' if a['status']=='Completed' else 'status-ongoing'}">{a['status']}</span>
+                        <span class="similarity-score">Match: {sim}%</span>
                     </div>
-                """, unsafe_allow_html=True)
-                
-                c1, c2, c3 = st.columns([8, 2, 2])
-                with c2:
-                    if st.button("❤️ Simpan", key=f"save_{idx}"):
-                        if anime['judul'] not in [f['judul'] for f in st.session_state.favorites]:
-                            st.session_state.favorites.append(anime)
-                            st.toast(f"✅ {anime['judul']} disimpan!")
-            
-            st.markdown("<br>", unsafe_allow_html=True)
-    
-    else:
-        # Welcome
-        st.markdown("""
-            <div style="text-align: center; padding: 4rem 2rem; color: #8b949e;">
-                <h2 style="color: #f0f6fc; margin-bottom: 1rem;">Selamat Datang</h2>
-                <p>Pilih mode rekomendasi di sidebar, lalu klik tombol "Generate Rekomendasi"</p>
-                <br>
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 800px; margin: 0 auto;">
-                    <div style="background: #161b22; padding: 1.5rem; border-radius: 12px; border: 1px solid #21262d;">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🤖</div>
-                        <div style="font-weight: 600; color: #f0f6fc;">ML Power</div>
-                        <div style="font-size: 0.85rem; color: #8b949e; margin-top: 0.5rem;">AI-Powered recommendations</div>
-                    </div>
-                    <div style="background: #161b22; padding: 1.5rem; border-radius: 12px; border: 1px solid #21262d;">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📊</div>
-                        <div style="font-weight: 600; color: #f0f6fc;">Clustering</div>
-                        <div style="font-size: 0.85rem; color: #8b949e; margin-top: 0.5rem;">Smart grouping</div>
-                    </div>
-                    <div style="background: #161b22; padding: 1.5rem; border-radius: 12px; border: 1px solid #21262d;">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
-                        <div style="font-weight: 600; color: #f0f6fc;">Accurate</div>
-                        <div style="font-size: 0.85rem; color: #8b949e; margin-top: 0.5rem;">High precision match</div>
-                    </div>
-                    <div style="background: #161b22; padding: 1.5rem; border-radius: 12px; border: 1px solid #21262d;">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚡</div>
-                        <div style="font-weight: 600; color: #f0f6fc;">Fast</div>
-                        <div style="font-size: 0.85rem; color: #8b949e; margin-top: 0.5rem;">Instant results</div>
-                    </div>
+                    <div class="genre-tags">{''.join([f'<span class="genre-tag">{g.strip()}</span>' for g in a['genre'].split(',')])}</div>
+                    <div class="synopsis">{a['sinopsis']}</div>
                 </div>
-            </div>
-        """, unsafe_allow_html=True)
+                """, unsafe_allow_html=True)
+                if st.button("❤️ Simpan", key=f"sv_{idx}"):
+                    if a['judul'] not in [x['judul'] for x in st.session_state.favorites]:
+                        st.session_state.favorites.append(a)
+                        st.toast(f"Saved {a['judul']}!")
 
-# ============================================================
-# TAB 2: ANALYTICS
-# ============================================================
+# Tab 2
 with tab2:
-    st.markdown('<h2 style="color: #f0f6fc; margin-bottom: 1.5rem;">📊 Machine Learning Analytics</h2>', unsafe_allow_html=True)
-    
-    # Info Box
-    st.markdown("""
-        <div class="info-box">
-            <h4>Sistem ML yang Digunakan</h4>
-            <p>• TF-IDF + Cosine Similarity untuk Content-Based Filtering<br>
-            • K-Means Clustering untuk mengelompokkan anime berdasarkan karakteristik<br>
-            • Hybrid approach menggabungkan kedua metode untuk hasil optimal</p>
-        </div>
-    """, unsafe_allow_html=True)
-    
-    # Cluster Overview
-    st.markdown('<h3 style="color: #f0f6fc; margin: 2rem 0 1rem 0;">K-Means Clusters</h3>', unsafe_allow_html=True)
-    
+    st.markdown('<h2 style="color:#f0f6fc;">📊 ML Analytics</h2>', unsafe_allow_html=True)
     cols = st.columns(5)
     colors = ['#1f6feb', '#238636', '#8957e5', '#da3633', '#d29922']
-    
     for i, col in enumerate(cols):
-        info = cluster_info[i]
         with col:
+            info = cluster_info[i]
             st.markdown(f"""
-                <div class="cluster-card" style="border-top: 3px solid {colors[i]};">
-                    <div class="cluster-number" style="color: {colors[i]};">Cluster {i}</div>
-                    <div class="cluster-count">{info['count']} anime</div>
-                    <div class="cluster-rating">⭐ {info['avg_rating']:.1f} avg</div>
-                    <div style="color: #8b949e; font-size: 0.8rem; margin-top: 0.5rem;">
-                        {', '.join(info['top_genres'])}
-                    </div>
-                </div>
+            <div class="cluster-card" style="border-top:3px solid {colors[i]}">
+                <div class="cluster-number" style="color:{colors[i]}">Cluster {i}</div>
+                <div class="cluster-count">{info['count']} anime</div>
+                <div class="cluster-rating">⭐ {info['avg_rating']:.1f}</div>
+                <div style="color:#8b949e;font-size:0.8rem">{', '.join(info['top_genres'])}</div>
+            </div>
             """, unsafe_allow_html=True)
     
-    # PCA Visualization
-    st.markdown('<h3 style="color: #f0f6fc; margin: 2rem 0 1rem 0;">Visualisasi PCA</h3>', unsafe_allow_html=True)
-    
     pca = PCA(n_components=2)
-    pca_result = pca.fit_transform(features)
-    
-    fig = px.scatter(
-        x=pca_result[:, 0],
-        y=pca_result[:, 1],
-        color=df_clustered['cluster'],
-        hover_name=df_clustered['judul'],
-        color_continuous_scale='viridis',
-        title='Distribusi Anime dalam 2D Space'
-    )
-    fig.update_layout(
-        paper_bgcolor='#0f1419',
-        plot_bgcolor='#161b22',
-        font_color='#e0e0e0',
-        title_font_color='#f0f6fc',
-        showlegend=False
-    )
+    pca_r = pca.fit_transform(features)
+    fig = px.scatter(x=pca_r[:,0], y=pca_r[:,1], color=df_clustered['cluster'], 
+                     hover_name=df_clustered['judul'], color_continuous_scale='viridis')
+    fig.update_layout(paper_bgcolor='#0f1419', plot_bgcolor='#161b22', font_color='#e0e0e0')
     st.plotly_chart(fig, use_container_width=True)
 
-# ============================================================
-# TAB 3: DATABASE
-# ============================================================
+# Tab 3 - FIXED HERE
 with tab3:
-    st.markdown('<h2 style="color: #f0f6fc; margin-bottom: 1.5rem;">📚 Database Anime</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 style="color:#f0f6fc;">📚 Database</h2>', unsafe_allow_html=True)
+    search = st.text_input("🔍 Cari anime...")
+    disp = df[df['judul'].str.contains(search, case=False)] if search else df
     
-    # Search
-    search = st.text_input("🔍 Cari anime...", placeholder="Ketik nama anime...")
-    
-    if search:
-        display_df = df[df['judul'].str.contains(search, case=False, na=False)]
-    else:
-        display_df = df
-    
-    # Display as styled dataframe
+    # FIXED: NumberColumn not Number_column
     st.dataframe(
-        display_df[['judul', 'genre', 'rating', 'tahun', 'episodes', 'studio', 'status', 'type']],
+        disp[['judul', 'genre', 'rating', 'tahun', 'episodes', 'studio', 'status', 'type']],
         use_container_width=True,
         hide_index=True,
         column_config={
@@ -1159,56 +774,38 @@ with tab3:
             "genre": st.column_config.TextColumn("Genre"),
             "rating": st.column_config.ProgressColumn("Rating", min_value=0, max_value=10, format="⭐ %.1f"),
             "tahun": st.column_config.NumberColumn("Tahun"),
-            "episodes": st.column_config.NumberColumn("Eps"),
+            "episodes": st.column_config.NumberColumn("Eps"),  # FIXED!
             "studio": st.column_config.TextColumn("Studio"),
             "status": st.column_config.TextColumn("Status"),
             "type": st.column_config.TextColumn("Tipe")
         }
     )
     
-    # Top Rated
-    st.markdown('<h3 style="color: #f0f6fc; margin-top: 2rem;">🏆 Top Rated</h3>', unsafe_allow_html=True)
+    st.markdown('<h3 style="color:#f0f6fc;margin-top:2rem">🏆 Top Rated</h3>', unsafe_allow_html=True)
     top5 = df.nlargest(5, 'rating')
-    
     cols = st.columns(5)
     for idx, (_, row) in enumerate(top5.iterrows()):
         with cols[idx]:
             st.image(row['image_url'], use_container_width=True)
-            st.markdown(f"""
-                <div style="text-align: center; margin-top: 0.5rem;">
-                    <div style="font-weight: 600; color: #f0f6fc; font-size: 0.9rem;">{row['judul']}</div>
-                    <div style="color: #3fb950; font-size: 0.875rem;">⭐ {row['rating']}</div>
-                </div>
-            """, unsafe_allow_html=True)
+            st.markdown(f"<div style='text-align:center'><div style='font-weight:600;color:#f0f6fc'>{row['judul']}</div><div style='color:#3fb950'>⭐ {row['rating']}</div></div>", unsafe_allow_html=True)
 
-# ============================================================
-# TAB 4: FAVORITES
-# ============================================================
+# Tab 4
 with tab4:
-    st.markdown('<h2 style="color: #f0f6fc; margin-bottom: 1.5rem;">⭐ Anime Favorit</h2>', unsafe_allow_html=True)
-    
+    st.markdown('<h2 style="color:#f0f6fc;">⭐ Favorit</h2>', unsafe_allow_html=True)
     if not st.session_state.favorites:
-        st.info("Belum ada anime favorit. Tambahkan dari tab Rekomendasi!")
+        st.info("Belum ada favorit.")
     else:
-        for fav in st.session_state.favorites:
+        for f in st.session_state.favorites:
             st.markdown(f"""
-                <div class="favorite-item">
-                    <div class="favorite-info">
-                        <h4>{fav['judul']}</h4>
-                        <p>⭐ {fav['rating']} | 📅 {fav['tahun']} | {fav['genre']}</p>
-                    </div>
+            <div class="favorite-item">
+                <div class="favorite-info">
+                    <h4>{f['judul']}</h4>
+                    <p>⭐ {f['rating']} | 📅 {f['tahun']} | {f['genre']}</p>
                 </div>
+            </div>
             """, unsafe_allow_html=True)
-        
-        if st.button("🗑️ Hapus Semua Favorit", type="secondary"):
+        if st.button("🗑️ Hapus Semua", type="secondary"):
             st.session_state.favorites = []
             st.rerun()
 
-# ============================================================
-# FOOTER
-# ============================================================
-st.markdown("""
-    <div class="footer">
-        <p>🎌 Anime Recommender ML • Built with Streamlit & Scikit-Learn • 2024</p>
-    </div>
-""", unsafe_allow_html=True)
+st.markdown('<div class="footer">🎌 Anime Recommender ML • 2024</div>', unsafe_allow_html=True)
