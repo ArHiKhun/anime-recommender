@@ -1159,7 +1159,7 @@ with tab3:
             "genre": st.column_config.TextColumn("Genre"),
             "rating": st.column_config.ProgressColumn("Rating", min_value=0, max_value=10, format="⭐ %.1f"),
             "tahun": st.column_config.NumberColumn("Tahun"),
-            "episodes": st.column_config.Number_column("Eps"),
+            "episodes": st.column_config.NumberColumn("Eps"),
             "studio": st.column_config.TextColumn("Studio"),
             "status": st.column_config.TextColumn("Status"),
             "type": st.column_config.TextColumn("Tipe")
